@@ -11,7 +11,7 @@
     "jsx": "react",
     "sourceMap": true,
     "skipDefaultLibCheck": true,
-    "strict": true,    
+    "strict": true
   },
   "exclude": [
     "bin",
