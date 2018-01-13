@@ -13,10 +13,12 @@
     "styleguide:build": "styleguidist build"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
     "react": "16.2.0",
     "react-dom": "16.2.0"
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.3",
     "@types/react": "16.0.34",
     "@types/react-dom": "16.0.3",
     "css-loader": "0.28.8",
