@@ -21,7 +21,7 @@ interface ButtonProps {
     dense?: boolean;
     compact?: boolean;
     disabled?: boolean;
-    onClick?: MouseEventHandler<HTMLButtonElement>
+    onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
 export class Button extends React.Component<ButtonProps, {}> {
@@ -52,13 +52,13 @@ export class Button extends React.Component<ButtonProps, {}> {
             onClick,
         } = this.props;
 
-        const classNames = cx(BUTTON, {
+        const classNames = cx(BUTTON, className, {
             [BUTTON_RAISED]: raised,
             [BUTTON_UNELEVATED]: unelevated,
             [BUTTON_STROKED]: stroked,
             [BUTTON_DENSE]: dense,
             [BUTTON_COMPACT]: compact
-        }, className);
+        });
 
         return (
             <button
