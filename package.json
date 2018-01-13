@@ -1,0 +1,31 @@
+{
+  "name": "material-components-react",
+  "version": "0.0.1",
+  "description": "React implementation of Material Components for the web",
+  "main": "index.js",
+  "repository": "https://github.com/Havret/material-components-react.git",
+  "author": "Havret <h4vret@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "webpack",
+    "styleguide": "styleguidist server",
+    "styleguide:build": "styleguidist build"
+  },
+  "dependencies": {
+    "react": "16.2.0",
+    "react-dom": "16.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "16.0.34",
+    "@types/react-dom": "16.0.3",
+    "css-loader": "0.28.8",
+    "file-loader": "1.1.6",
+    "react-docgen-typescript": "1.2.1",
+    "react-styleguidist": "6.1.0",
+    "style-loader": "0.19.1",
+    "ts-loader": "^3.2.0",
+    "typescript": "^2.6.2",
+    "webpack": "3.10.0"
+  }
+}
