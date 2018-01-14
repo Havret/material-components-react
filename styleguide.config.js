@@ -3,9 +3,10 @@ module.exports = {
     components: 'src/**/*.tsx',
     ignore: ['**/*.test.tsx', '**/*.test.ts'],
     propsParser: require('react-docgen-typescript').withDefaultConfig().parse,
-    template: './styleguide/index.html',
+    template: './docs/index.html',
     require: [
-        './styleguide/styles.css',
+        './docs/styles.css',
         '@material/button/dist/mdc.button.css'
-    ]
+    ],
+    styleguideDir: './docs'
 };
