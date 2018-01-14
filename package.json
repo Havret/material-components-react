@@ -10,7 +10,8 @@
   "scripts": {
     "build": "webpack",
     "styleguide": "styleguidist server",
-    "styleguide:build": "styleguidist build"
+    "styleguide:build": "styleguidist build",
+    "test": "jest"
   },
   "dependencies": {
     "classnames": "^2.2.5",
@@ -18,15 +19,24 @@
     "react-dom": "16.2.0"
   },
   "devDependencies": {
+    "@types/enzyme": "3.1.6",
+    "@types/enzyme-adapter-react-16": "1.0.1",
+    "@types/enzyme-to-json": "^1.5.0",
+    "@types/jest": "22.0.1",
     "@material/button": "^0.28.0",
     "@types/classnames": "^2.2.3",
     "@types/react": "16.0.34",
     "@types/react-dom": "16.0.3",
     "css-loader": "0.28.8",
+    "enzyme": "3.3.0",
+    "enzyme-adapter-react-16": "1.1.1",
+    "enzyme-to-json": "^3.2.2",
     "file-loader": "1.1.6",
+    "jest": "^22.0.6",
     "react-docgen-typescript": "1.2.1",
     "react-styleguidist": "6.1.0",
     "style-loader": "0.19.1",
+    "ts-jest": "^22.0.1",
     "ts-loader": "^3.2.0",
     "tslint": "^5.9.1",
     "tslint-loader": "^3.5.3",
