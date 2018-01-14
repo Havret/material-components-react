@@ -14,6 +14,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
     "react": "16.2.0",
     "react-dom": "16.2.0"
   },
@@ -22,6 +23,8 @@
     "@types/enzyme-adapter-react-16": "1.0.1",
     "@types/enzyme-to-json": "^1.5.0",
     "@types/jest": "22.0.1",
+    "@material/button": "^0.28.0",
+    "@types/classnames": "^2.2.3",
     "@types/react": "16.0.34",
     "@types/react-dom": "16.0.3",
     "css-loader": "0.28.8",
