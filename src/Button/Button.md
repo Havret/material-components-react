@@ -3,7 +3,7 @@
 ### Text Button
 
 ```js
-<div>
+<div className="margin">
     <Button>Baseline</Button>
     <Button compact>Compact</Button>
     <Button dense>Dense</Button>
@@ -14,7 +14,7 @@
 ### Raised Button
 
 ```js
-<div>
+<div className="margin">
     <Button raised>Baseline</Button>
     <Button raised compact>Compact</Button>
     <Button raised dense>Dense</Button>
@@ -25,7 +25,7 @@
 ### Unelevated Button (Experimental)
 
 ```js
-<div>
+<div className="margin">
     <Button unelevated>Baseline</Button>
     <Button unelevated compact>Compact</Button>
     <Button unelevated dense>Dense</Button>
@@ -36,7 +36,7 @@
 ### Stroked Button (Experimental)
 
 ```js
-<div>
+<div className="margin">
     <Button stroked>Baseline</Button>
     <Button stroked compact>Compact</Button>
     <Button stroked dense>Dense</Button>

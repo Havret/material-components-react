@@ -1,6 +1,6 @@
 import * as cx from 'classnames';
 import * as React from 'react';
-import { MouseEventHandler } from 'react';
+import { MouseEventHandler, ReactNode } from 'react';
 
 import {
     BUTTON,
@@ -13,29 +13,56 @@ import {
 } from './constants';
 
 interface ButtonProps {
+    /**
+     * The content of the button.
+     */
+    children?: ReactNode;
+    /**
+     * Addition CSS classes that will be added to the root element.
+     */
     className?: string;
+    /**
+     * The name of the icon font ligature.
+     */
     icon?: string;
+    /**
+     * If `true` the button is elevated upon the surface.
+     */
     raised?: boolean;
+    /**
+     * If `true` the button is flushed with the surface.
+     */
     unelevated?: boolean;
+    /**
+     * If `true` the button is flushed with the surface and has a visible border.
+     */
     stroked?: boolean;
+    /**
+     * If `true`, compresses the button text to make it slightly smaller.
+     */
     dense?: boolean;
+    /**
+     * If `true`, reduces the amount of horizontal padding in the button.
+     */
     compact?: boolean;
+    /**
+     * If `true`, the button will be disabled.
+     */
     disabled?: boolean;
+    /**
+     * Click event handler.
+     */
     onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
 export class Button extends React.Component<ButtonProps, {}> {
     static defaultProps = {
-        children: null,
-        className: null,
-        icon: null,
         raised: false,
         unelevated: false,
         stroked: false,
         dense: false,
         compact: false,
         disabled: false,
-        onClick: null
     };
 
     render() {
