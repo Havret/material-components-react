@@ -55,7 +55,7 @@ interface ButtonProps {
     onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
-export class Button extends React.Component<ButtonProps, {}> {
+class Button extends React.Component<ButtonProps, {}> {
     static defaultProps = {
         raised: false,
         unelevated: false,
@@ -100,4 +100,4 @@ export class Button extends React.Component<ButtonProps, {}> {
     }
 }
 
-export default Button;
+export { Button as default, Button, ButtonProps };
