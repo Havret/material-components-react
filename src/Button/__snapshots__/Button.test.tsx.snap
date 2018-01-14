@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Compact Button 1`] = `
+<Button
+  compact={true}
+  dense={false}
+  disabled={false}
+  raised={false}
+  stroked={false}
+  unelevated={false}
+>
+  <button
+    className="mdc-button mdc-button--compact"
+    disabled={false}
+  >
+    Button
+  </button>
+</Button>
+`;
+
+exports[`Button Dense Button 1`] = `
+<Button
+  compact={false}
+  dense={true}
+  disabled={false}
+  raised={false}
+  stroked={false}
+  unelevated={false}
+>
+  <button
+    className="mdc-button mdc-button--dense"
+    disabled={false}
+  >
+    Button
+  </button>
+</Button>
+`;
+
+exports[`Button Icon Button 1`] = `
+<Button
+  compact={false}
+  dense={false}
+  disabled={false}
+  icon="favorite"
+  raised={false}
+  stroked={false}
+  unelevated={false}
+>
+  <button
+    className="mdc-button"
+    disabled={false}
+  >
+    <i
+      className="material-icons mdc-button__icon"
+    >
+      favorite
+    </i>
+    Button
+  </button>
+</Button>
+`;
+
+exports[`Button Raised Button 1`] = `
+<Button
+  compact={false}
+  dense={false}
+  disabled={false}
+  raised={true}
+  stroked={false}
+  unelevated={false}
+>
+  <button
+    className="mdc-button mdc-button--raised"
+    disabled={false}
+  >
+    Button
+  </button>
+</Button>
+`;
+
+exports[`Button Stroked Button 1`] = `
+<Button
+  compact={false}
+  dense={false}
+  disabled={false}
+  raised={false}
+  stroked={true}
+  unelevated={false}
+>
+  <button
+    className="mdc-button mdc-button--stroked"
+    disabled={false}
+  >
+    Button
+  </button>
+</Button>
+`;
+
+exports[`Button Text Button 1`] = `
+<Button
+  compact={false}
+  dense={false}
+  disabled={false}
+  raised={false}
+  stroked={false}
+  unelevated={false}
+>
+  <button
+    className="mdc-button"
+    disabled={false}
+  >
+    Button
+  </button>
+</Button>
+`;
+
+exports[`Button Unelevated Button 1`] = `
+<Button
+  compact={false}
+  dense={false}
+  disabled={false}
+  raised={false}
+  stroked={false}
+  unelevated={true}
+>
+  <button
+    className="mdc-button mdc-button--unelevated"
+    disabled={false}
+  >
+    Button
+  </button>
+</Button>
+`;
