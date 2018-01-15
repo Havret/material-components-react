@@ -6,15 +6,35 @@ exports[`Button Compact Button 1`] = `
   dense={false}
   disabled={false}
   raised={false}
+  ripple={true}
   stroked={false}
   unelevated={false}
 >
-  <button
-    className="mdc-button mdc-button--compact"
+  <Ripple
     disabled={false}
+    render={[Function]}
   >
-    Button
-  </button>
+    <button
+      className="mdc-button mdc-ripple-upgraded mdc-button--compact"
+      disabled={false}
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
+      style={
+        Object {
+          "--mdc-ripple-fg-scale": "Infinity",
+          "--mdc-ripple-fg-size": "0px",
+          "--mdc-ripple-left": "0px",
+          "--mdc-ripple-top": "0px",
+        }
+      }
+    >
+      Button
+    </button>
+  </Ripple>
 </Button>
 `;
 
@@ -24,15 +44,73 @@ exports[`Button Dense Button 1`] = `
   dense={true}
   disabled={false}
   raised={false}
+  ripple={true}
   stroked={false}
   unelevated={false}
 >
-  <button
-    className="mdc-button mdc-button--dense"
+  <Ripple
     disabled={false}
+    render={[Function]}
   >
-    Button
-  </button>
+    <button
+      className="mdc-button mdc-ripple-upgraded mdc-button--dense"
+      disabled={false}
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
+      style={
+        Object {
+          "--mdc-ripple-fg-scale": "Infinity",
+          "--mdc-ripple-fg-size": "0px",
+          "--mdc-ripple-left": "0px",
+          "--mdc-ripple-top": "0px",
+        }
+      }
+    >
+      Button
+    </button>
+  </Ripple>
+</Button>
+`;
+
+exports[`Button Disabled Button 1`] = `
+<Button
+  compact={false}
+  dense={false}
+  disabled={true}
+  raised={false}
+  ripple={true}
+  stroked={false}
+  unelevated={false}
+>
+  <Ripple
+    disabled={true}
+    render={[Function]}
+  >
+    <button
+      className="mdc-button mdc-ripple-upgraded"
+      disabled={true}
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
+      style={
+        Object {
+          "--mdc-ripple-fg-scale": "Infinity",
+          "--mdc-ripple-fg-size": "0px",
+          "--mdc-ripple-left": "0px",
+          "--mdc-ripple-top": "0px",
+        }
+      }
+    >
+      Button
+    </button>
+  </Ripple>
 </Button>
 `;
 
@@ -43,20 +121,40 @@ exports[`Button Icon Button 1`] = `
   disabled={false}
   icon="favorite"
   raised={false}
+  ripple={true}
   stroked={false}
   unelevated={false}
 >
-  <button
-    className="mdc-button"
+  <Ripple
     disabled={false}
+    render={[Function]}
   >
-    <i
-      className="material-icons mdc-button__icon"
+    <button
+      className="mdc-button mdc-ripple-upgraded"
+      disabled={false}
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
+      style={
+        Object {
+          "--mdc-ripple-fg-scale": "Infinity",
+          "--mdc-ripple-fg-size": "0px",
+          "--mdc-ripple-left": "0px",
+          "--mdc-ripple-top": "0px",
+        }
+      }
     >
-      favorite
-    </i>
-    Button
-  </button>
+      <i
+        className="material-icons mdc-button__icon"
+      >
+        favorite
+      </i>
+      Button
+    </button>
+  </Ripple>
 </Button>
 `;
 
@@ -66,11 +164,50 @@ exports[`Button Raised Button 1`] = `
   dense={false}
   disabled={false}
   raised={true}
+  ripple={true}
+  stroked={false}
+  unelevated={false}
+>
+  <Ripple
+    disabled={false}
+    render={[Function]}
+  >
+    <button
+      className="mdc-button mdc-ripple-upgraded mdc-button--raised"
+      disabled={false}
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
+      style={
+        Object {
+          "--mdc-ripple-fg-scale": "Infinity",
+          "--mdc-ripple-fg-size": "0px",
+          "--mdc-ripple-left": "0px",
+          "--mdc-ripple-top": "0px",
+        }
+      }
+    >
+      Button
+    </button>
+  </Ripple>
+</Button>
+`;
+
+exports[`Button Ripple Disabled 1`] = `
+<Button
+  compact={false}
+  dense={false}
+  disabled={false}
+  raised={false}
+  ripple={false}
   stroked={false}
   unelevated={false}
 >
   <button
-    className="mdc-button mdc-button--raised"
+    className="mdc-button"
     disabled={false}
   >
     Button
@@ -84,15 +221,35 @@ exports[`Button Stroked Button 1`] = `
   dense={false}
   disabled={false}
   raised={false}
+  ripple={true}
   stroked={true}
   unelevated={false}
 >
-  <button
-    className="mdc-button mdc-button--stroked"
+  <Ripple
     disabled={false}
+    render={[Function]}
   >
-    Button
-  </button>
+    <button
+      className="mdc-button mdc-ripple-upgraded mdc-button--stroked"
+      disabled={false}
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
+      style={
+        Object {
+          "--mdc-ripple-fg-scale": "Infinity",
+          "--mdc-ripple-fg-size": "0px",
+          "--mdc-ripple-left": "0px",
+          "--mdc-ripple-top": "0px",
+        }
+      }
+    >
+      Button
+    </button>
+  </Ripple>
 </Button>
 `;
 
@@ -102,15 +259,35 @@ exports[`Button Text Button 1`] = `
   dense={false}
   disabled={false}
   raised={false}
+  ripple={true}
   stroked={false}
   unelevated={false}
 >
-  <button
-    className="mdc-button"
+  <Ripple
     disabled={false}
+    render={[Function]}
   >
-    Button
-  </button>
+    <button
+      className="mdc-button mdc-ripple-upgraded"
+      disabled={false}
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
+      style={
+        Object {
+          "--mdc-ripple-fg-scale": "Infinity",
+          "--mdc-ripple-fg-size": "0px",
+          "--mdc-ripple-left": "0px",
+          "--mdc-ripple-top": "0px",
+        }
+      }
+    >
+      Button
+    </button>
+  </Ripple>
 </Button>
 `;
 
@@ -120,14 +297,34 @@ exports[`Button Unelevated Button 1`] = `
   dense={false}
   disabled={false}
   raised={false}
+  ripple={true}
   stroked={false}
   unelevated={true}
 >
-  <button
-    className="mdc-button mdc-button--unelevated"
+  <Ripple
     disabled={false}
+    render={[Function]}
   >
-    Button
-  </button>
+    <button
+      className="mdc-button mdc-ripple-upgraded mdc-button--unelevated"
+      disabled={false}
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
+      style={
+        Object {
+          "--mdc-ripple-fg-scale": "Infinity",
+          "--mdc-ripple-fg-size": "0px",
+          "--mdc-ripple-left": "0px",
+          "--mdc-ripple-top": "0px",
+        }
+      }
+    >
+      Button
+    </button>
+  </Ripple>
 </Button>
 `;

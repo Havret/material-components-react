@@ -8,6 +8,15 @@ import { Button, ButtonProps } from './Button';
 describe('Button', () => {
     configure({adapter: new Adapter()});
 
+    beforeAll(() => {
+        // tslint:disable-next-line:no-any
+        (global as any).CSS = {
+            supports: () => {
+                return true;
+            }
+        };
+    });
+
     const setUp = (props: ButtonProps, content: string = 'Button') => {
         const wrapper = mount(<Button {...props}>{content}</Button>);
         return toJson(wrapper);
@@ -39,5 +48,13 @@ describe('Button', () => {
 
     test('Icon Button', () => {
         expect(setUp({icon: 'favorite'})).toMatchSnapshot();
+    });
+
+    test('Ripple Disabled', () => {
+        expect(setUp({ripple: false})).toMatchSnapshot();
+    });
+
+    test('Disabled Button', () => {
+        expect(setUp({disabled: true})).toMatchSnapshot();
     });
 });
