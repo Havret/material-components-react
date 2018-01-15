@@ -3,9 +3,7 @@
     "rules": {
         "align": [
             true,
-            "parameters",
-            "arguments",
-            "statements"
+            "parameters"
         ],
         "ban": false,
         "class-name": true,
@@ -63,7 +61,7 @@
         ],
         "quotemark": [true, "single", "jsx-double"],
         "radix": true,
-        "semicolon": [true, "always"],
+        "semicolon": [true, "always", "ignore-bound-class-methods"],
         "switch-default": true,
 
         "trailing-comma": [false],
