@@ -1,0 +1,1 @@
+export { Ripple, RippleProps, RippleComponentProps } from './Ripple';

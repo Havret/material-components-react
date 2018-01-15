@@ -11,6 +11,7 @@ import {
     BUTTON_STROKED,
     BUTTON_UNELEVATED,
 } from './constants';
+import { Ripple, RippleComponentProps } from '../Ripple/Ripple';
 
 interface ButtonProps {
     /**
@@ -50,6 +51,10 @@ interface ButtonProps {
      */
     disabled?: boolean;
     /**
+     * If `true` adds a ripple effect to the component
+     */
+    ripple?: boolean;
+    /**
      * Click event handler.
      */
     onClick?: MouseEventHandler<HTMLButtonElement>;
@@ -63,9 +68,20 @@ class Button extends React.Component<ButtonProps, {}> {
         dense: false,
         compact: false,
         disabled: false,
+        ripple: true
     };
 
     render() {
+        const {ripple, disabled} = this.props;
+
+        return ripple
+            ? <Ripple disabled={disabled} render={this.renderButton}/>
+            : this.renderButton();
+    }
+
+    private renderButton = (rippleProps: Partial<RippleComponentProps> = {}) => {
+        const {className: rippleClass, innerRef, ...rest} = rippleProps;
+
         const {
             children,
             className,
@@ -79,7 +95,7 @@ class Button extends React.Component<ButtonProps, {}> {
             onClick,
         } = this.props;
 
-        const classNames = cx(BUTTON, className, {
+        const classNames = cx(BUTTON, rippleClass, className, {
             [BUTTON_RAISED]: raised,
             [BUTTON_UNELEVATED]: unelevated,
             [BUTTON_STROKED]: stroked,
@@ -89,15 +105,17 @@ class Button extends React.Component<ButtonProps, {}> {
 
         return (
             <button
-                className={classNames}
+                className={cx(classNames)}
                 disabled={disabled}
                 onClick={onClick}
+                ref={innerRef}
+                {...rest}
             >
                 {icon && <i className={cx('material-icons', BUTTON_ICON)}>{icon}</i>}
                 {children}
             </button>
         );
-    }
+    };
 }
 
 export { Button as default, Button, ButtonProps };
