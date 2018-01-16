@@ -1,9 +1,9 @@
 import * as cx from 'classnames';
 import * as React from 'react';
-import { CSSProperties, EventHandler, MouseEvent, TouchEvent, FocusEvent } from 'react';
+import { CSSProperties, EventHandler, MouseEvent, TouchEvent, FocusEvent, ReactNode } from 'react';
 
 import { cssClasses, numbers, strings } from './constants';
-import { getNormalizedEventCoords, supportsCssVariables } from './util';
+import { applyPassive, getNormalizedEventCoords } from './util';
 
 enum RippleMode {
     none, activated, deactivated
@@ -35,12 +35,42 @@ interface RippleComponentProps {
 }
 
 interface RippleProps {
+    /**
+     * @ignore
+     */
+    children?: ReactNode;
+    /**
+     * If `true` adds base styles for a ripple surface.
+     */
+    surface?: boolean;
+    /**
+     * If `true` styles ripple surface using theme's primary colors.
+     */
+    primary?: boolean;
+    /**
+     * If `true` styles ripple surface using theme's secondary colors.
+     */
+    secondary?: boolean;
+    /**
+     * If `true` lets a ripple grow outside of its bounds, just like on checkboxes or radio buttons.
+     */
     unbounded?: boolean;
+    /**
+     * If `true`, the ripple will be disabled.
+     */
     disabled?: boolean;
     render: ((props: RippleComponentProps) => React.ReactNode);
 }
 
 class Ripple extends React.Component<RippleProps, RippleState> {
+    static defaultProps = {
+        surface: true,
+        primary: false,
+        secondary: false,
+        unbounded: false,
+        disabled: false,
+    };
+
     state = {
         eventCoords: {x: 0, y: 0},
         frame: {width: 0, height: 0},
@@ -56,7 +86,7 @@ class Ripple extends React.Component<RippleProps, RippleState> {
     private _activationHasEnded: boolean;
 
     componentDidMount(): void {
-        if (!supportsCssVariables() || !this._innerRef) {
+        if (!this._innerRef) {
             return;
         }
 
@@ -67,7 +97,7 @@ class Ripple extends React.Component<RippleProps, RippleState> {
     }
 
     componentWillUnmount(): void {
-        if (!supportsCssVariables() || !this._innerRef) {
+        if (!this._innerRef) {
             return;
         }
 
@@ -96,16 +126,18 @@ class Ripple extends React.Component<RippleProps, RippleState> {
     }
 
     render() {
-        const {unbounded} = this.props;
+        const {unbounded, surface, primary, secondary} = this.props;
         const {frame, mode, focused} = this.state;
         const {height, width} = frame;
 
         const classNames = cx(cssClasses.ROOT, {
             [cssClasses.UNBOUNDED]: unbounded,
-            [cssClasses.BG_ACTIVE_FILL]: mode === RippleMode.activated,
             [cssClasses.FG_ACTIVATION]: mode === RippleMode.activated,
             [cssClasses.FG_DEACTIVATION]: mode === RippleMode.deactivated,
-            [cssClasses.BG_FOCUSED]: focused
+            [cssClasses.BG_FOCUSED]: focused,
+            [cssClasses.SURFACE]: surface,
+            [cssClasses.SURFACE_PRIMARY]: primary,
+            [cssClasses.SURFACE_SECONDARY]: secondary
         });
 
         const maxDim = Math.max(height, width);
@@ -200,6 +232,8 @@ class Ripple extends React.Component<RippleProps, RippleState> {
             }, this._innerRef.getBoundingClientRect())
         });
 
+        document.documentElement.addEventListener('touchend', this.handleDeactivate, applyPassive());
+        document.documentElement.addEventListener('mouseup', this.handleDeactivate, applyPassive());
         this._activationHasEnded = false;
     };
 
@@ -218,7 +252,10 @@ class Ripple extends React.Component<RippleProps, RippleState> {
 
         if (activationAnimationHasEnded && activationHasEnded) {
             this._activationAnimationHasEnded = false;
-            this.setState({mode: RippleMode.deactivated, focused: false});
+            this.setState({mode: RippleMode.deactivated});
+
+            document.documentElement.removeEventListener('touchend', this.handleDeactivate, applyPassive());
+            document.documentElement.removeEventListener('mouseup', this.handleDeactivate, applyPassive());
         }
     };
 
@@ -227,4 +264,4 @@ class Ripple extends React.Component<RippleProps, RippleState> {
     private setInnerRef = (ref: Element | null) => this._innerRef = ref;
 }
 
-export { Ripple, RippleProps, RippleComponentProps };
+export { Ripple as default, Ripple, RippleProps, RippleComponentProps };

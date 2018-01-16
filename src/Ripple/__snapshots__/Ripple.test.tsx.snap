@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Bounded 1`] = `
+<Ripple
+  disabled={false}
+  primary={false}
+  render={[Function]}
+  secondary={false}
+  surface={true}
+  unbounded={false}
+>
+  <div
+    className="mdc-ripple-upgraded mdc-ripple-surface"
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
+    style={
+      Object {
+        "--mdc-ripple-fg-scale": "Infinity",
+        "--mdc-ripple-fg-size": "0px",
+        "--mdc-ripple-left": "0px",
+        "--mdc-ripple-top": "0px",
+      }
+    }
+  >
+    Ripple
+  </div>
+</Ripple>
+`;
+
+exports[`Button Primary 1`] = `
+<Ripple
+  disabled={false}
+  primary={true}
+  render={[Function]}
+  secondary={false}
+  surface={true}
+  unbounded={false}
+>
+  <div
+    className="mdc-ripple-upgraded mdc-ripple-surface mdc-ripple-surface--primary"
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
+    style={
+      Object {
+        "--mdc-ripple-fg-scale": "Infinity",
+        "--mdc-ripple-fg-size": "0px",
+        "--mdc-ripple-left": "0px",
+        "--mdc-ripple-top": "0px",
+      }
+    }
+  >
+    Ripple
+  </div>
+</Ripple>
+`;
+
+exports[`Button Secondary 1`] = `
+<Ripple
+  disabled={false}
+  primary={false}
+  render={[Function]}
+  secondary={true}
+  surface={true}
+  unbounded={false}
+>
+  <div
+    className="mdc-ripple-upgraded mdc-ripple-surface mdc-ripple-surface--accent"
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
+    style={
+      Object {
+        "--mdc-ripple-fg-scale": "Infinity",
+        "--mdc-ripple-fg-size": "0px",
+        "--mdc-ripple-left": "0px",
+        "--mdc-ripple-top": "0px",
+      }
+    }
+  >
+    Ripple
+  </div>
+</Ripple>
+`;
+
+exports[`Button Unbounded 1`] = `
+<Ripple
+  disabled={false}
+  primary={false}
+  render={[Function]}
+  secondary={false}
+  surface={true}
+  unbounded={true}
+>
+  <div
+    className="mdc-ripple-upgraded mdc-ripple-upgraded--unbounded mdc-ripple-surface"
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
+    style={
+      Object {
+        "--mdc-ripple-fg-scale": "Infinity",
+        "--mdc-ripple-fg-size": "0px",
+        "--mdc-ripple-left": "0px",
+        "--mdc-ripple-top": "0px",
+      }
+    }
+  >
+    Ripple
+  </div>
+</Ripple>
+`;

@@ -12,7 +12,11 @@ exports[`Button Compact Button 1`] = `
 >
   <Ripple
     disabled={false}
+    primary={false}
     render={[Function]}
+    secondary={false}
+    surface={false}
+    unbounded={false}
   >
     <button
       className="mdc-button mdc-ripple-upgraded mdc-button--compact"
@@ -50,7 +54,11 @@ exports[`Button Dense Button 1`] = `
 >
   <Ripple
     disabled={false}
+    primary={false}
     render={[Function]}
+    secondary={false}
+    surface={false}
+    unbounded={false}
   >
     <button
       className="mdc-button mdc-ripple-upgraded mdc-button--dense"
@@ -88,7 +96,11 @@ exports[`Button Disabled Button 1`] = `
 >
   <Ripple
     disabled={true}
+    primary={false}
     render={[Function]}
+    secondary={false}
+    surface={false}
+    unbounded={false}
   >
     <button
       className="mdc-button mdc-ripple-upgraded"
@@ -127,7 +139,11 @@ exports[`Button Icon Button 1`] = `
 >
   <Ripple
     disabled={false}
+    primary={false}
     render={[Function]}
+    secondary={false}
+    surface={false}
+    unbounded={false}
   >
     <button
       className="mdc-button mdc-ripple-upgraded"
@@ -170,7 +186,11 @@ exports[`Button Raised Button 1`] = `
 >
   <Ripple
     disabled={false}
+    primary={false}
     render={[Function]}
+    secondary={false}
+    surface={false}
+    unbounded={false}
   >
     <button
       className="mdc-button mdc-ripple-upgraded mdc-button--raised"
@@ -227,7 +247,11 @@ exports[`Button Stroked Button 1`] = `
 >
   <Ripple
     disabled={false}
+    primary={false}
     render={[Function]}
+    secondary={false}
+    surface={false}
+    unbounded={false}
   >
     <button
       className="mdc-button mdc-ripple-upgraded mdc-button--stroked"
@@ -265,7 +289,11 @@ exports[`Button Text Button 1`] = `
 >
   <Ripple
     disabled={false}
+    primary={false}
     render={[Function]}
+    secondary={false}
+    surface={false}
+    unbounded={false}
   >
     <button
       className="mdc-button mdc-ripple-upgraded"
@@ -303,7 +331,11 @@ exports[`Button Unelevated Button 1`] = `
 >
   <Ripple
     disabled={false}
+    primary={false}
     render={[Function]}
+    secondary={false}
+    surface={false}
+    unbounded={false}
   >
     <button
       className="mdc-button mdc-ripple-upgraded mdc-button--unelevated"

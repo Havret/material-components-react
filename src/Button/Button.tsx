@@ -75,7 +75,7 @@ class Button extends React.Component<ButtonProps, {}> {
         const {ripple, disabled} = this.props;
 
         return ripple
-            ? <Ripple disabled={disabled} render={this.renderButton}/>
+            ? <Ripple disabled={disabled} surface={false} render={this.renderButton}/>
             : this.renderButton();
     }
 

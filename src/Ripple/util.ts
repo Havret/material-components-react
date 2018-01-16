@@ -46,6 +46,26 @@ function detectEdgePseudoVarBug() {
     return hasPseudoVarBug;
 }
 
+let _supportsPassive: boolean;
+
+function applyPassive(globalObj: Window = window, forceRefresh: boolean = false): boolean | AddEventListenerOptions {
+    if (_supportsPassive === undefined || forceRefresh) {
+        let isSupported = false;
+        const options = Object.defineProperty({}, 'passive', {
+            get() { isSupported = true; },
+        });
+
+        // tslint:disable-next-line:no-empty
+        const noop = () => {};
+        globalObj.document.addEventListener('testPassiveEventSupport', noop, options);
+        globalObj.document.removeEventListener('testPassiveEventSupport', noop, options);
+
+        _supportsPassive = isSupported;
+    }
+
+    return _supportsPassive ? {passive: true} : false;
+}
+
 type Event = TouchEvent<{}> | MouseEvent<{}>;
 function getNormalizedEventCoords(event: Event, pageOffset: { x: number, y: number }, clientRect: ClientRect) {
     const {x, y} = pageOffset;
@@ -71,4 +91,4 @@ function isTouchEvent(event: TouchEvent<{}> | MouseEvent<{}>): event is TouchEve
     return event.type === 'touchstart';
 }
 
-export { supportsCssVariables, getNormalizedEventCoords };
+export { supportsCssVariables, applyPassive, getNormalizedEventCoords };
