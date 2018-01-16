@@ -6,7 +6,8 @@ module.exports = {
     template: './docs/index.html',
     require: [
         './docs/styles.css',
-        '@material/button/dist/mdc.button.css'
+        '@material/button/dist/mdc.button.css',
+        '@material/ripple/dist/mdc.ripple.css'
     ],
     styleguideDir: './docs'
 };
