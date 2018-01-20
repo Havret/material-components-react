@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Checkbox It should have mdc classes 1`] = `
+exports[`Checkbox It should have mdc classes - Ripple Disabled 1`] = `
 <div
   className="mdc-checkbox mdc-checkbox--upgraded"
 >
@@ -29,4 +29,66 @@ exports[`Checkbox It should have mdc classes 1`] = `
     />
   </div>
 </div>
+`;
+
+exports[`Checkbox It should have mdc classes - Ripple Enabled 1`] = `
+<Checkbox
+  checked={false}
+  disabled={false}
+  indeterminate={false}
+  ripple={true}
+>
+  <Ripple
+    computeBoundingRect={[Function]}
+    disabled={false}
+    primary={false}
+    render={[Function]}
+    secondary={false}
+    surface={false}
+    unbounded={true}
+  >
+    <div
+      className="mdc-checkbox mdc-checkbox--upgraded mdc-ripple-upgraded mdc-ripple-upgraded--unbounded"
+      style={
+        Object {
+          "--mdc-ripple-fg-scale": "2.773689270621825",
+          "--mdc-ripple-fg-size": "24px",
+          "--mdc-ripple-left": "8px",
+          "--mdc-ripple-top": "8px",
+        }
+      }
+    >
+      <input
+        checked={false}
+        className="mdc-checkbox__native-control"
+        disabled={false}
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchStart={[Function]}
+        type="checkbox"
+      />
+      <div
+        className="mdc-checkbox__background"
+      >
+        <svg
+          className="mdc-checkbox__checkmark"
+          viewBox="0 0 24 24"
+        >
+          <path
+            className="mdc-checkbox__checkmark__path"
+            d="M1.73,12.91 8.1,19.28 22.79,4.59"
+            fill="none"
+            stroke="white"
+          />
+        </svg>
+        <div
+          className="mdc-checkbox__mixedmark"
+        />
+      </div>
+    </div>
+  </Ripple>
+</Checkbox>
 `;

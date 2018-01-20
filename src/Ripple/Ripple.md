@@ -3,8 +3,8 @@
 ```js
 <div className="demo-surface">
     <Ripple        
-        render={({innerRef, ...rest}) =>
-            (<div {...rest} ref={innerRef}>Interact with me</div>)}
+        render={(rest) =>
+            (<div {...rest}>Interact with me</div>)}
     />
 </div>
 ```
@@ -15,8 +15,8 @@
 <div className="demo-surface">
     <Ripple
         unbounded={true}               
-        render={({innerRef, ...rest}) =>
-            (<div {...rest} ref={innerRef}>Interact with me</div>)}
+        render={(rest) =>
+            (<div {...rest}>Interact with me</div>)}
     />
 </div>
 ```
@@ -27,14 +27,14 @@
 <div className="demo-surface">
     <Ripple
         primary={true}               
-        render={({innerRef, ...rest}) =>
-            (<div {...rest} ref={innerRef}>Primary</div>)}
+        render={(rest) =>
+            (<div {...rest}>Primary</div>)}
     />
     
     <Ripple
             secondary={true}               
-            render={({innerRef, ...rest}) =>
-                (<div {...rest} ref={innerRef}>Secondary</div>)}
+            render={(rest) =>
+                (<div {...rest}>Secondary</div>)}
         />
 </div>
 ```

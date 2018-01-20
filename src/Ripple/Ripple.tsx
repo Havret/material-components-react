@@ -5,6 +5,15 @@ import { CSSProperties, EventHandler, MouseEvent, TouchEvent, FocusEvent, ReactN
 import { cssClasses, numbers, strings } from './constants';
 import { applyPassive, getNormalizedEventCoords } from './util';
 
+const defaultBoundingRect: ClientRect = {
+    height: 0,
+    width: 0,
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0
+};
+
 enum RippleMode {
     none, activated, deactivated
 }
@@ -29,7 +38,7 @@ interface RippleComponentProps {
     onMouseUp: EventHandler<MouseEvent<{}>>;
     onBlur: EventHandler<FocusEvent<{}>>;
     onFocus: EventHandler<FocusEvent<{}>>;
-    innerRef: (ref: Element | null) => void;
+    ref?: (ref: Element | null) => void;
     className: string;
     style: CSSProperties;
 }
@@ -59,6 +68,11 @@ interface RippleProps {
      * If `true`, the ripple will be disabled.
      */
     disabled?: boolean;
+    /**
+     * Returns the ClientRect for the surface.
+     * @returns {ClientRect}
+     */
+    computeBoundingRect?: () => ClientRect;
     render: ((props: RippleComponentProps) => React.ReactNode);
 }
 
@@ -80,27 +94,22 @@ class Ripple extends React.Component<RippleProps, RippleState> {
 
     private _innerRef: Element | null;
     private _layoutFrame: number;
-    private _activationTimer: number;
-    private _fgDeactivationRemovalTimer: number;
     private _activationAnimationHasEnded: boolean;
     private _activationHasEnded: boolean;
 
-    componentDidMount(): void {
-        if (!this._innerRef) {
-            return;
-        }
+    // https://github.com/Microsoft/TypeScript/issues/842
+    // tslint:disable:no-any
+    private _activationTimer: any;
+    private _fgDeactivationRemovalTimer: any; // tslint:enable:no-any
 
+    componentDidMount(): void {
         window.addEventListener('resize', this.handleResize);
 
-        const {width, height} = this._innerRef.getBoundingClientRect();
+        const {width, height} = this.getBoundingClientRect();
         this.setState({frame: {width, height}});
     }
 
     componentWillUnmount(): void {
-        if (!this._innerRef) {
-            return;
-        }
-
         window.removeEventListener('resize', this.handleResize);
     }
 
@@ -113,20 +122,20 @@ class Ripple extends React.Component<RippleProps, RippleState> {
 
             this._activationAnimationHasEnded = false;
 
-            this._activationTimer = window.setTimeout(() => {
+            this._activationTimer = setTimeout(() => {
                 this._activationAnimationHasEnded = true;
                 this.deactivate();
             }, numbers.DEACTIVATION_TIMEOUT_MS);
         } else if (mode === RippleMode.deactivated) {
             clearTimeout(this._fgDeactivationRemovalTimer);
-            this._fgDeactivationRemovalTimer = window.setTimeout(() => {
+            this._fgDeactivationRemovalTimer = setTimeout(() => {
                 this.setState({mode: RippleMode.none});
             }, numbers.FG_DEACTIVATION_MS);
         }
     }
 
     render() {
-        const {unbounded, surface, primary, secondary} = this.props;
+        const {unbounded, surface, primary, secondary, computeBoundingRect} = this.props;
         const {frame, mode, focused} = this.state;
         const {height, width} = frame;
 
@@ -173,19 +182,22 @@ class Ripple extends React.Component<RippleProps, RippleState> {
             });
         }
 
-        return (
-            <>{this.props.render({
-                className: classNames,
-                style: styles,
-                onTouchStart: this.handleActivate,
-                onMouseDown: this.handleActivate,
-                onTouchEnd: this.handleDeactivate,
-                onMouseUp: this.handleDeactivate,
-                onFocus: this.handleFocus,
-                onBlur: this.handleBlur,
-                innerRef: this.setInnerRef,
-            })}</>
-        );
+        let props: RippleComponentProps = {
+            className: classNames,
+            style: styles,
+            onTouchStart: this.handleActivate,
+            onMouseDown: this.handleActivate,
+            onTouchEnd: this.handleDeactivate,
+            onMouseUp: this.handleDeactivate,
+            onFocus: this.handleFocus,
+            onBlur: this.handleBlur,
+        };
+
+        if (!computeBoundingRect) {
+            props = Object.assign(props, {ref: this.setInnerRef});
+        }
+
+        return this.props.render(props);
     }
 
     private getFgTranslationCoordinates = (initialSize: number) => {
@@ -209,18 +221,14 @@ class Ripple extends React.Component<RippleProps, RippleState> {
         }
 
         this._layoutFrame = requestAnimationFrame(() => {
-            if (!this._innerRef) {
-                return;
-            }
-
-            const {width, height} = this._innerRef.getBoundingClientRect();
+            const {width, height} = this.getBoundingClientRect();
             this.setState({frame: {width, height}});
             this._layoutFrame = 0;
         });
     };
 
     private handleActivate: EventHandler<React.MouseEvent<{}> | TouchEvent<{}>> = event => {
-        if (this.props.disabled || this.state.mode === RippleMode.activated || !this._innerRef) {
+        if (this.props.disabled || this.state.mode === RippleMode.activated) {
             return;
         }
 
@@ -229,7 +237,7 @@ class Ripple extends React.Component<RippleProps, RippleState> {
             eventCoords: getNormalizedEventCoords(event, {
                 x: window.pageXOffset,
                 y: window.pageYOffset
-            }, this._innerRef.getBoundingClientRect())
+            }, this.getBoundingClientRect())
         });
 
         document.documentElement.addEventListener('touchend', this.handleDeactivate, applyPassive());
@@ -262,6 +270,18 @@ class Ripple extends React.Component<RippleProps, RippleState> {
     private handleFocus = () => this.setState({focused: true});
     private handleBlur = () => this.setState({focused: false});
     private setInnerRef = (ref: Element | null) => this._innerRef = ref;
+
+    private getBoundingClientRect = (): ClientRect => {
+        const {computeBoundingRect} = this.props;
+
+        if (computeBoundingRect) {
+            return computeBoundingRect();
+        } else if (this._innerRef) {
+            return this._innerRef.getBoundingClientRect();
+        } else {
+            return defaultBoundingRect;
+        }
+    };
 }
 
-export { Ripple as default, Ripple, RippleProps, RippleComponentProps };
+export { Ripple as default, Ripple, RippleProps, RippleComponentProps, defaultBoundingRect };

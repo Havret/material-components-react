@@ -80,7 +80,7 @@ class Button extends React.Component<ButtonProps, {}> {
     }
 
     private renderButton = (rippleProps: Partial<RippleComponentProps> = {}) => {
-        const {className: rippleClass, innerRef, ...rest} = rippleProps;
+        const {className: rippleClass, ...rest} = rippleProps;
 
         const {
             children,
@@ -108,7 +108,6 @@ class Button extends React.Component<ButtonProps, {}> {
                 className={cx(classNames)}
                 disabled={disabled}
                 onClick={onClick}
-                ref={innerRef}
                 {...rest}
             >
                 {icon && <i className={cx('material-icons', BUTTON_ICON)}>{icon}</i>}
