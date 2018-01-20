@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@material/checkbox": "^0.28.0",
+    "@material/fab": "^0.28.0",
     "classnames": "^2.2.5",
     "react": "16.2.0",
     "react-dom": "16.2.0"

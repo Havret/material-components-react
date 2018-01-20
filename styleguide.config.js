@@ -8,7 +8,8 @@ module.exports = {
         './docs/styles.css',
         '@material/button/dist/mdc.button.css',
         '@material/ripple/dist/mdc.ripple.css',
-        '@material/checkbox/dist/mdc.checkbox.css'
+        '@material/checkbox/dist/mdc.checkbox.css',
+        '@material/fab/dist/mdc.fab.css'
     ],
     styleguideDir: './docs'
 };

@@ -1,0 +1,1 @@
+export const MATERIAL_ICONS = 'material-icons';
