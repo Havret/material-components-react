@@ -27,6 +27,17 @@
     "@material/theme" "^0.28.0"
     "@material/typography" "^0.28.0"
 
+"@material/checkbox@^0.28.0":
+  version "0.28.0"
+  resolved "https://registry.yarnpkg.com/@material/checkbox/-/checkbox-0.28.0.tgz#57f8399bbf581ec9fbc8eba618ae93b6cc7a21f0"
+  dependencies:
+    "@material/animation" "^0.25.0"
+    "@material/base" "^0.24.0"
+    "@material/ripple" "^0.28.0"
+    "@material/rtl" "^0.1.8"
+    "@material/selection-control" "^0.28.0"
+    "@material/theme" "^0.28.0"
+
 "@material/elevation@^0.28.0":
   version "0.28.0"
   resolved "https://registry.yarnpkg.com/@material/elevation/-/elevation-0.28.0.tgz#78d3a551b78100d588c457600733ee1c6fd04501"
@@ -40,6 +51,16 @@
   dependencies:
     "@material/base" "^0.24.0"
     "@material/theme" "^0.28.0"
+
+"@material/rtl@^0.1.8":
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/@material/rtl/-/rtl-0.1.8.tgz#2462db15e2d4e041666485559c028382872b01fb"
+
+"@material/selection-control@^0.28.0":
+  version "0.28.0"
+  resolved "https://registry.yarnpkg.com/@material/selection-control/-/selection-control-0.28.0.tgz#5b6d555083b5a465b7626dc7b168d1c3ed58b74a"
+  dependencies:
+    "@material/ripple" "^0.28.0"
 
 "@material/theme@^0.28.0":
   version "0.28.0"

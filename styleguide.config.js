@@ -7,7 +7,8 @@ module.exports = {
     require: [
         './docs/styles.css',
         '@material/button/dist/mdc.button.css',
-        '@material/ripple/dist/mdc.ripple.css'
+        '@material/ripple/dist/mdc.ripple.css',
+        '@material/checkbox/dist/mdc.checkbox.css'
     ],
     styleguideDir: './docs'
 };
