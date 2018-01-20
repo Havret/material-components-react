@@ -11,9 +11,11 @@
     "build": "webpack",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
+    "@material/checkbox": "^0.28.0",
     "classnames": "^2.2.5",
     "react": "16.2.0",
     "react-dom": "16.2.0"
