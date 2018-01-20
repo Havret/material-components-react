@@ -45,10 +45,6 @@ interface RippleComponentProps {
 
 interface RippleProps {
     /**
-     * @ignore
-     */
-    children?: ReactNode;
-    /**
      * If `true` adds base styles for a ripple surface.
      */
     surface?: boolean;
