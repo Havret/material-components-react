@@ -16,8 +16,7 @@ import {
     CheckState
 } from './constants';
 import { determineCheckState, getTransitionAnimationClass } from './util';
-import { RippleComponentProps } from '../Ripple/Ripple';
-import { Ripple } from '../Ripple';
+import { Ripple, defaultBoundingRect, RippleComponentProps } from '../Ripple';
 
 interface CheckboxProps extends ObjectOmit<HTMLProps<HTMLInputElement>, 'type'> {
     /**
@@ -56,12 +55,13 @@ class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
         checked: false,
         indeterminate: false,
         disabled: false,
-        ripple: false,
+        ripple: true,
     };
 
     // https://github.com/Microsoft/TypeScript/issues/842
     // tslint:disable-next-line:no-any
     private _animEndLatchTimer: any = 0;
+    private _innerRef: HTMLInputElement | null;
 
     constructor(props: CheckboxProps) {
         super(props);
@@ -85,19 +85,31 @@ class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
         this.setState({checkState, transitionAnimationClass});
     }
 
+    componentDidMount() {
+        this.setIndeterminate();
+    }
+
+    componentDidUpdate() {
+        this.setIndeterminate();
+    }
+
     render() {
         const {ripple, disabled} = this.props;
 
-        return ripple
-            ? <Ripple disabled={disabled} surface={false} unbounded={true} render={this.renderCheckbox}/>
-            : this.renderCheckbox();
+        return ripple ? (
+            <Ripple
+                disabled={disabled}
+                surface={false}
+                unbounded={true}
+                computeBoundingRect={this.computeBoundingRect}
+                render={this.renderCheckbox}
+            />) : this.renderCheckbox();
     }
 
     private renderCheckbox = (rippleProps: Partial<RippleComponentProps> = {}) => {
         const {
             className: rippleClass,
             style,
-            innerRef,
             ...restRippleProps
         } = rippleProps;
 
@@ -106,6 +118,7 @@ class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
             disabled,
             indeterminate,  // Filter out properties which should not
             checked,        // be passed to native input element
+            ripple,         //
             ...rest
         } = this.props;
         const {transitionAnimationClass, checkState} = this.state;
@@ -131,14 +144,7 @@ class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
                     className={NATIVE_CONTROL}
                     disabled={disabled}
                     checked={checkState === CheckState.checked}
-                    // TODO: Find a better way to preserve native dom
-                    // element and pass ref callback to Ripple component
-                    // tslint:disable:no-unused-expression
-                    ref={x => {
-                        x ? x.indeterminate = checkState === CheckState.indeterminate : undefined;
-                        innerRef ? innerRef(x) : undefined;
-                    }}
-                    // tslint:enable:no-unused-expression
+                    ref={this.setInnerRef}
                 />
                 <div className={BACKGROUND}>
                     <svg className={CHECKMARK} viewBox="0 0 24 24">
@@ -160,6 +166,31 @@ class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
         this._animEndLatchTimer = setTimeout(() => {
             this.setState({transitionAnimationClass: ''});
         }, ANIM_END_LATCH_MS);
+    };
+
+    private computeBoundingRect = () => {
+        if (this._innerRef) {
+            const {left, top} = this._innerRef.getBoundingClientRect();
+            const DIM = 40;
+            return {
+                top,
+                left,
+                right: left + DIM,
+                bottom: top + DIM,
+                width: DIM,
+                height: DIM,
+            };
+        } else {
+            return defaultBoundingRect;
+        }
+    };
+
+    private setInnerRef = (ref: HTMLInputElement | null) => this._innerRef = ref;
+
+    private setIndeterminate = () => {
+        if (this._innerRef) {
+            this._innerRef.indeterminate = this.state.checkState === CheckState.indeterminate;
+        }
     };
 }
 
