@@ -24,3 +24,14 @@ You can check current progress at our interactive [playground](https://havret.gi
  
   Since Material Components for the Web can be customized with scss, this project does not depend on specific stylesheet.
   You can load your own stylesheet or a default one.
+  
+## To run the tests
+- `yarn test`
+or
+- `yarn test:watch`
+
+## To run the docs / contribute
+- `git clone https://github.com/Havret/material-components-react.git`
+- `cd material-components-react`
+- `yarn`
+- `yarn styleguide`
