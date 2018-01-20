@@ -1,5 +1,12 @@
 Checkboxes allow the user to select multiple options from a set.
 
+## Ripple enabled
+
+```js
+initialState = { checked: false };
+<Checkbox ripple checked={state.checked} onChange={e => setState({checked: e.target.checked})} />
+```
+
 ## CSS Only
 
 ### Default checkbox

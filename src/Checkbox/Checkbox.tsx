@@ -16,6 +16,8 @@ import {
     CheckState
 } from './constants';
 import { determineCheckState, getTransitionAnimationClass } from './util';
+import { RippleComponentProps } from '../Ripple/Ripple';
+import { Ripple } from '../Ripple';
 
 interface CheckboxProps extends ObjectOmit<HTMLProps<HTMLInputElement>, 'type'> {
     /**
@@ -35,6 +37,10 @@ interface CheckboxProps extends ObjectOmit<HTMLProps<HTMLInputElement>, 'type'> 
      */
     disabled?: boolean;
     /**
+     * If `true` adds a ripple effect to the component
+     */
+    ripple?: boolean;
+    /**
      *    Callback fired when the state is changed.
      */
     onChange?: ChangeEventHandler<HTMLInputElement>;
@@ -50,6 +56,7 @@ class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
         checked: false,
         indeterminate: false,
         disabled: false,
+        ripple: false,
     };
 
     // https://github.com/Microsoft/TypeScript/issues/842
@@ -79,6 +86,21 @@ class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
     }
 
     render() {
+        const {ripple, disabled} = this.props;
+
+        return ripple
+            ? <Ripple disabled={disabled} surface={false} unbounded={true} render={this.renderCheckbox}/>
+            : this.renderCheckbox();
+    }
+
+    private renderCheckbox = (rippleProps: Partial<RippleComponentProps> = {}) => {
+        const {
+            className: rippleClass,
+            style,
+            innerRef,
+            ...restRippleProps
+        } = rippleProps;
+
         const {
             className,
             disabled,
@@ -88,7 +110,7 @@ class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
         } = this.props;
         const {transitionAnimationClass, checkState} = this.state;
 
-        const classNames = cx(ROOT, UPGRADED, transitionAnimationClass, {
+        const classNames = cx(ROOT, UPGRADED, rippleClass, transitionAnimationClass, {
             [DISABLED]: disabled
         }, className);
 
@@ -100,14 +122,23 @@ class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
             <div
                 className={classNames}
                 onAnimationEnd={onAnimationEnd}
+                style={style}
             >
                 <input
                     {...rest}
+                    {...restRippleProps}
                     type="checkbox"
                     className={NATIVE_CONTROL}
                     disabled={disabled}
                     checked={checkState === CheckState.checked}
-                    ref={x => x ? x.indeterminate = checkState === CheckState.indeterminate : undefined}
+                    // TODO: Find a better way to preserve native dom
+                    // element and pass ref callback to Ripple component
+                    // tslint:disable:no-unused-expression
+                    ref={x => {
+                        x ? x.indeterminate = checkState === CheckState.indeterminate : undefined;
+                        innerRef ? innerRef(x) : undefined;
+                    }}
+                    // tslint:enable:no-unused-expression
                 />
                 <div className={BACKGROUND}>
                     <svg className={CHECKMARK} viewBox="0 0 24 24">
@@ -122,7 +153,7 @@ class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
                 </div>
             </div>
         );
-    }
+    };
 
     private handleOnAnimationEnd: React.AnimationEventHandler<HTMLDivElement> = () => {
         clearTimeout(this._animEndLatchTimer);

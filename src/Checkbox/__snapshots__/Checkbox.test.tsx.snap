@@ -8,6 +8,7 @@ exports[`Checkbox It should have mdc classes 1`] = `
     checked={false}
     className="mdc-checkbox__native-control"
     disabled={false}
+    ripple={false}
     type="checkbox"
   />
   <div
