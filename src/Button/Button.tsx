@@ -11,7 +11,8 @@ import {
     BUTTON_STROKED,
     BUTTON_UNELEVATED,
 } from './constants';
-import { Ripple, RippleComponentProps } from '../Ripple/Ripple';
+import { MATERIAL_ICONS } from '../constants';
+import { Ripple, RippleComponentProps } from '../Ripple';
 
 interface ButtonProps {
     /**
@@ -110,7 +111,7 @@ class Button extends React.Component<ButtonProps, {}> {
                 onClick={onClick}
                 {...rest}
             >
-                {icon && <i className={cx('material-icons', BUTTON_ICON)}>{icon}</i>}
+                {icon && <i className={cx(MATERIAL_ICONS, BUTTON_ICON)}>{icon}</i>}
                 {children}
             </button>
         );

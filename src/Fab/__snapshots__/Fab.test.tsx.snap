@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Fab It should have mdc classes - Ripple Disabled 1`] = `
+<button
+  className="mdc-fab material-icons"
+/>
+`;
+
+exports[`Fab It should have mdc classes - Ripple Enabled 1`] = `
+<Fab
+  exited={false}
+  mini={false}
+  ripple={true}
+>
+  <Ripple
+    disabled={false}
+    primary={false}
+    render={[Function]}
+    secondary={false}
+    surface={false}
+    unbounded={false}
+  >
+    <button
+      className="mdc-fab material-icons mdc-ripple-upgraded"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
+      style={
+        Object {
+          "--mdc-ripple-fg-scale": "Infinity",
+          "--mdc-ripple-fg-size": "0px",
+          "--mdc-ripple-left": "0px",
+          "--mdc-ripple-top": "0px",
+        }
+      }
+    />
+  </Ripple>
+</Fab>
+`;
