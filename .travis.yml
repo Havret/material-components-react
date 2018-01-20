@@ -6,7 +6,7 @@ before_install:
 install:
   - yarn
 script: yarn test
-script: yarn: styleguide:build
+script: yarn styleguide:build
 deploy:
   provider: pages
   skip_cleanup: true
