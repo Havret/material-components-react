@@ -16,7 +16,7 @@ import { Ripple, RippleComponentProps } from '../Ripple';
 
 interface ButtonProps {
     /**
-     * The content of the button.
+     * The content of the button. TEST
      */
     children?: ReactNode;
     /**

@@ -1,8 +1,16 @@
 language: node_js
+node_js:
+  - 6
 before_install:
   - npm install -g yarn --cache-min 999999999
 install:
   - yarn
 script: yarn test
-node_js:
-  - 6
+script: yarn: styleguide:build
+deploy:
+  provider: pages
+  skip_cleanup: true
+  local_dir: docs/
+  github_token: $GITHUB_TOKEN
+  on:
+    branch: test_docs
