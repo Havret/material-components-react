@@ -1,5 +1,7 @@
 # [React Material Components for the web](https://havret.github.io/material-components-react/)
 
+[![Build Status](https://travis-ci.org/Havret/material-components-react.svg?branch=master)](https://travis-ci.org/Havret/material-components-react)
+
 React implementation of [Material Components for the web](https://github.com/material-components/material-components-web). 
 Components are written in React: no foundation/adapters are used.
 
