@@ -27,7 +27,9 @@ You can check current progress at our interactive [playground](https://havret.gi
   
 ## To run the tests
 - `yarn test`
-or
+
+  or
+
 - `yarn test:watch`
 
 ## To run the docs / contribute
