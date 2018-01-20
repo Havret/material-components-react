@@ -1,1 +1,1 @@
-export { Ripple, RippleProps, RippleComponentProps } from './Ripple';
+export { Ripple, RippleProps, RippleComponentProps, defaultBoundingRect } from './Ripple';

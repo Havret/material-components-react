@@ -12,8 +12,8 @@ describe('Button', () => {
         const wrapper = mount(
             <Ripple
                 {...props}
-                render={({innerRef, ...rest}) =>
-                    (<div {...rest} ref={innerRef}>{content}</div>)}
+                render={(rippleProps) =>
+                    (<div {...rippleProps}>{content}</div>)}
             />);
         return toJson(wrapper);
     };
