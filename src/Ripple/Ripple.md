@@ -1,7 +1,7 @@
 ### Bounded
 
 ```js
-<div className="demo-surface">
+<div className="demo-surfaces">
     <Ripple        
         render={(rest) =>
             (<div {...rest}>Interact with me</div>)}
@@ -12,7 +12,7 @@
 ### Unbounded
 
 ```js
-<div className="demo-surface">
+<div className="demo-surfaces">
     <Ripple
         unbounded={true}               
         render={(rest) =>
@@ -24,7 +24,7 @@
 ### Theme Styles
 
 ```js
-<div className="demo-surface">
+<div className="demo-surfaces">
     <Ripple
         primary={true}               
         render={(rest) =>
