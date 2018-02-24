@@ -9,7 +9,8 @@ module.exports = {
         '@material/button/dist/mdc.button.css',
         '@material/ripple/dist/mdc.ripple.css',
         '@material/checkbox/dist/mdc.checkbox.css',
-        '@material/fab/dist/mdc.fab.css'
+        '@material/fab/dist/mdc.fab.css',
+        '@material/elevation/dist/mdc.elevation.css'
     ],
     styleguideDir: './docs'
 };

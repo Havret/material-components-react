@@ -15,14 +15,15 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
+    "@material/elevation": "^0.28.0",
     "classnames": "^2.2.5",
     "react": "16.2.0",
     "react-dom": "16.2.0"
   },
   "devDependencies": {
+    "@material/button": "^0.28.0",
     "@material/checkbox": "^0.28.0",
     "@material/fab": "^0.28.0",
-    "@material/button": "^0.28.0",
     "@material/ripple": "^0.28.0",
     "@types/classnames": "^2.2.3",
     "@types/enzyme": "3.1.7",
