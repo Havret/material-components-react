@@ -81,13 +81,6 @@ class Ripple extends React.Component<RippleProps, RippleState> {
         disabled: false,
     };
 
-    state = {
-        eventCoords: {x: 0, y: 0},
-        frame: {width: 0, height: 0},
-        mode: RippleMode.none,
-        focused: false
-    };
-
     private _innerRef: Element | null;
     private _layoutFrame: number;
     private _activationAnimationHasEnded: boolean;
@@ -97,6 +90,22 @@ class Ripple extends React.Component<RippleProps, RippleState> {
     // tslint:disable:no-any
     private _activationTimer: any;
     private _fgDeactivationRemovalTimer: any; // tslint:enable:no-any
+
+    constructor(props: RippleProps) {
+        super(props);
+
+        this.state = {
+            eventCoords: {x: 0, y: 0},
+            frame: {width: 0, height: 0},
+            mode: RippleMode.none,
+            focused: false
+        };
+
+        this._innerRef = null;
+        this._layoutFrame = 0;
+        this._activationHasEnded = false;
+        this._activationAnimationHasEnded = false;
+    }
 
     componentDidMount(): void {
         window.addEventListener('resize', this.handleResize);

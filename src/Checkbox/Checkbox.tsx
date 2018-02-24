@@ -70,6 +70,8 @@ class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
             checkState: determineCheckState(props),
             transitionAnimationClass: ''
         };
+
+        this._innerRef = null;
     }
 
     componentWillReceiveProps(nextProps: Readonly<CheckboxProps>): void {
