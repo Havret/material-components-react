@@ -103,7 +103,6 @@ class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
                 disabled={disabled}
                 surface={false}
                 unbounded={true}
-                computeBoundingRect={this.computeBoundingRect}
                 render={this.renderCheckbox}
             />) : this.renderCheckbox();
     }
@@ -112,6 +111,7 @@ class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
         const {
             className: rippleClass,
             style,
+            ref,
             ...restRippleProps
         } = rippleProps;
 
@@ -138,6 +138,7 @@ class Checkbox extends React.Component<CheckboxProps, CheckboxState> {
                 className={classNames}
                 onAnimationEnd={onAnimationEnd}
                 style={style}
+                ref={ref}
             >
                 <input
                     {...rest}
