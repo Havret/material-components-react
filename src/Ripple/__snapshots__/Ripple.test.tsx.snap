@@ -112,7 +112,7 @@ exports[`Button Unbounded 1`] = `
     onTouchStart={[Function]}
     style={
       Object {
-        "--mdc-ripple-fg-scale": "Infinity",
+        "--mdc-ripple-fg-scale": "NaN",
         "--mdc-ripple-fg-size": "0px",
         "--mdc-ripple-left": "0px",
         "--mdc-ripple-top": "0px",

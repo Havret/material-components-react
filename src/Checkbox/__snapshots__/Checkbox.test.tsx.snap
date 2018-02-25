@@ -39,7 +39,6 @@ exports[`Checkbox It should have mdc classes - Ripple Enabled 1`] = `
   ripple={true}
 >
   <Ripple
-    computeBoundingRect={[Function]}
     disabled={false}
     primary={false}
     render={[Function]}
@@ -51,10 +50,10 @@ exports[`Checkbox It should have mdc classes - Ripple Enabled 1`] = `
       className="mdc-checkbox mdc-checkbox--upgraded mdc-ripple-upgraded mdc-ripple-upgraded--unbounded"
       style={
         Object {
-          "--mdc-ripple-fg-scale": "2.773689270621825",
-          "--mdc-ripple-fg-size": "24px",
-          "--mdc-ripple-left": "8px",
-          "--mdc-ripple-top": "8px",
+          "--mdc-ripple-fg-scale": "NaN",
+          "--mdc-ripple-fg-size": "0px",
+          "--mdc-ripple-left": "0px",
+          "--mdc-ripple-top": "0px",
         }
       }
     >

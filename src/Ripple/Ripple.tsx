@@ -155,9 +155,11 @@ class Ripple extends React.Component<RippleProps, RippleState> {
         });
 
         const maxDim = Math.max(height, width);
-        const surfaceDiameter = Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2));
+        const maxRadius = unbounded
+            ? maxDim
+            : Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2)) + numbers.PADDING;
+
         const initialSize = maxDim * numbers.INITIAL_ORIGIN_SCALE;
-        const maxRadius = surfaceDiameter + numbers.PADDING;
         const fgScale = maxRadius / initialSize;
         const unboundedCoords = unbounded ? {
             left: Math.round((width / 2) - (initialSize / 2)),
@@ -282,6 +284,7 @@ class Ripple extends React.Component<RippleProps, RippleState> {
         if (computeBoundingRect) {
             return computeBoundingRect();
         } else if (this._innerRef) {
+            debugger;
             return this._innerRef.getBoundingClientRect();
         } else {
             return defaultBoundingRect;
