@@ -3,7 +3,6 @@ module.exports = {
     components: 'src/**/*.tsx',
     ignore: ['**/*.test.tsx', '**/*.test.ts'],
     propsParser: require('react-docgen-typescript').withDefaultConfig({propFilter: {skipPropsWithoutDoc: true}}).parse,
-    template: './docs/index.html',
     require: [
         './docs/styles.css',
         '@material/button/dist/mdc.button.css',
@@ -12,5 +11,16 @@ module.exports = {
         '@material/fab/dist/mdc.fab.css',
         '@material/elevation/dist/mdc.elevation.css'
     ],
+    template: {
+        head: {
+            links: [{
+                rel: 'stylesheet',
+                href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500'
+            }, {
+                rel: 'stylesheet',
+                href: 'https://fonts.googleapis.com/icon?family=Material+Icons'
+            }]
+        }
+    },
     styleguideDir: './docs'
 };

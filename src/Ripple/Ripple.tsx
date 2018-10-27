@@ -247,8 +247,8 @@ class Ripple extends React.Component<RippleProps, RippleState> {
             }, this.getBoundingClientRect())
         });
 
-        document.documentElement.addEventListener('touchend', this.handleDeactivate, applyPassive());
-        document.documentElement.addEventListener('mouseup', this.handleDeactivate, applyPassive());
+        document.documentElement!.addEventListener('touchend', this.handleDeactivate, applyPassive());
+        document.documentElement!.addEventListener('mouseup', this.handleDeactivate, applyPassive());
         this._activationHasEnded = false;
     };
 
@@ -269,8 +269,8 @@ class Ripple extends React.Component<RippleProps, RippleState> {
             this._activationAnimationHasEnded = false;
             this.setState({mode: RippleMode.deactivated});
 
-            document.documentElement.removeEventListener('touchend', this.handleDeactivate, applyPassive());
-            document.documentElement.removeEventListener('mouseup', this.handleDeactivate, applyPassive());
+            document.documentElement!.removeEventListener('touchend', this.handleDeactivate, applyPassive());
+            document.documentElement!.removeEventListener('mouseup', this.handleDeactivate, applyPassive());
         }
     };
 
@@ -284,7 +284,6 @@ class Ripple extends React.Component<RippleProps, RippleState> {
         if (computeBoundingRect) {
             return computeBoundingRect();
         } else if (this._innerRef) {
-            debugger;
             return this._innerRef.getBoundingClientRect();
         } else {
             return defaultBoundingRect;
